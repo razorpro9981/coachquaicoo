@@ -56,7 +56,7 @@ export default function EnhancedAboutSection() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          style={{ y }}
+        //   style={{ y }}
         >
           {/* Decorative frame effect */}
           {/* <div className="absolute inset-0 border-r-4 border-white/20 z-10" /> */}

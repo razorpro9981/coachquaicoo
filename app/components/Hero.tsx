@@ -43,7 +43,7 @@ export default function EnhancedHeroHeader() {
         className="absolute inset-0 pointer-events-none hidden md:block"
       >
         <motion.div
-          style={{ y }}
+          //   style={{ y }}
           className="absolute right-0 top-0 h-full w-[55%] md:w-[52%] lg:w-[50%] overflow-hidden"
         >
           {/* Decorative border frame */}
