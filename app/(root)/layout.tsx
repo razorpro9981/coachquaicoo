@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Raleway } from "next/font/google";
 import "@/app/styles/globals.css";
+import Navbar from "../components/Navbar";
+import EnhancedFooter from "../components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,9 +41,13 @@ export default function RootLayout({
     <html lang="en">
       
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable} antialiased `}
       >
-        {children}
+        <Navbar />
+        <main className="pt-15">
+          {children}
+        </main>
+        <EnhancedFooter />
       </body>
     </html>
   );

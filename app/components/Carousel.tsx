@@ -27,7 +27,7 @@ export default function EnhancedLogoCarousel() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.2 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -36,7 +36,7 @@ export default function EnhancedLogoCarousel() {
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "60px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
               viewport={{ once: true }}
               className="h-[1px] bg-gradient-to-r from-transparent to-[#9B6B5C]"
             />
@@ -46,7 +46,7 @@ export default function EnhancedLogoCarousel() {
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "60px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
               viewport={{ once: true }}
               className="h-[1px] bg-gradient-to-l from-transparent to-[#9B6B5C]"
             />
@@ -55,7 +55,7 @@ export default function EnhancedLogoCarousel() {
           <motion.h3
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="text-2xl md:text-3xl font-serif font-light text-[#2B3A67]"
           >
@@ -72,7 +72,7 @@ export default function EnhancedLogoCarousel() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 0, delay: 0 }}
             viewport={{ once: true }}
             className="relative flex justify-center"
           >
@@ -102,7 +102,7 @@ export default function EnhancedLogoCarousel() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           viewport={{ once: true }}
           className="mt-12 flex justify-center gap-12 flex-wrap"
         >

@@ -35,11 +35,11 @@ const Navbar: React.FC = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-[#F5F1E8]/90 backdrop-blur-xl shadow-sm border-b border-[#E6DCCE]/50"
-          : "bg-transparent"
+          : "bg-[#F7EFE8]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -96,7 +96,8 @@ const Navbar: React.FC = () => {
                     {/* Animated underline */}
                     <motion.div
                       className="absolute left-0 -bottom-1 h-[1px] bg-[#9B6B5C]"
-                      initial={{ width: isActive ? "100%" : "0%" }}
+                      initial={{ width: "0%" }}
+                      animate={{ width: isActive ? "100%" : "0%" }}
                       whileHover={{ width: "100%" }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     />

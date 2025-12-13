@@ -60,7 +60,7 @@ export default function EnhancedAboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.2 }}
           className="md:hidden w-full h-[400px] relative rounded-lg overflow-hidden shadow-xs"
         >
           <Image
@@ -78,7 +78,7 @@ export default function EnhancedAboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.2 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-3 mb-6 md:mb-8"
           >
@@ -92,7 +92,7 @@ export default function EnhancedAboutSection() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="text-[#2C2420] text-3xl sm:text-4xl md:text-5xl font-serif font-light leading-tight mb-6 md:mb-8"
           >
@@ -102,7 +102,7 @@ export default function EnhancedAboutSection() {
                 Clarity, Confidence & Growth
               </span>
               {/* Simple underline - no animation */}
-              <span className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-0.5 bg-[#C17B5C] opacity-60"></span>
+              <span className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-0.5 bg-[#C17B5C] opacity-60 rounded-full"></span>
             </span>
           </motion.h2>
 
@@ -110,7 +110,7 @@ export default function EnhancedAboutSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-[#5C5349] max-w-xl mb-8 md:mb-12"
           >
@@ -124,7 +124,7 @@ export default function EnhancedAboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 md:mb-12"
           >
@@ -133,7 +133,7 @@ export default function EnhancedAboutSection() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
+                transition={{ duration: 0.2, delay: 0.4 + i * 0.1 }}
                 viewport={{ once: true }}
                 className="relative group cursor-default hover:-translate-y-1 transition-transform duration-300"
               >
@@ -168,7 +168,7 @@ export default function EnhancedAboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="mb-6 md:mb-10"
           >
@@ -183,7 +183,7 @@ export default function EnhancedAboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
           >
             <Link href="/about" className="inline-flex items-center gap-2 sm:gap-3 group hover:translate-x-1 transition-transform duration-300">
@@ -200,7 +200,7 @@ export default function EnhancedAboutSection() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 0.04 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="absolute -right-10 top-0 text-[200px] font-serif text-[#C17B5C] leading-none select-none pointer-events-none hidden lg:block"
           >

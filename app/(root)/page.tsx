@@ -13,7 +13,7 @@ import FAQSection from "../components/FAQ";
 export default function LuxuryHome() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-cream)]">
-      <Navbar />
+      {/* <Navbar /> */}
       <EnhancedHeroHeader />
       <EnhancedLogoCarousel />
       <EnhancedAboutSection />
@@ -21,7 +21,7 @@ export default function LuxuryHome() {
       <EnhancedQuotesSection />
       <MultiPathCTA />
       <FAQSection />
-      <EnhancedFooter />
+      {/* <EnhancedFooter /> */}
     </div>
   );
 }

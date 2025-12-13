@@ -59,7 +59,7 @@ export default function FAQSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.2 }}
             viewport={{ once: true }}
             className="inline-block"
           >
@@ -75,7 +75,7 @@ export default function FAQSection() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#2C2420] mb-6"
           >
@@ -85,7 +85,7 @@ export default function FAQSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-base sm:text-lg md:text-xl text-[#5C5349] max-w-2xl mx-auto leading-relaxed font-light"
           >
@@ -96,7 +96,7 @@ export default function FAQSection() {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="h-[1px] bg-gradient-to-r from-[#C17B5C] via-[#9B87C4] to-[#8FA699] mx-auto mt-8"
           />
@@ -113,7 +113,7 @@ export default function FAQSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.2, delay: 0.3 }}
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
@@ -141,7 +141,7 @@ function FAQItem({ faq, index }: { faq: any; index: number }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
       viewport={{ once: true }}
       className="group"
     >
@@ -151,7 +151,7 @@ function FAQItem({ faq, index }: { faq: any; index: number }) {
           animate={{
             opacity: isOpen ? 0.04 : 0,
           }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="absolute inset-0"
           style={{ backgroundColor: faq.color }}
         />
@@ -167,7 +167,7 @@ function FAQItem({ faq, index }: { faq: any; index: number }) {
               initial={{ width: 0 }}
               whileInView={{ width: "40px" }}
               animate={{ width: isOpen ? "60px" : "40px" }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="h-[2px] mb-4"
               style={{ backgroundColor: faq.color }}

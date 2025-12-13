@@ -62,7 +62,7 @@ export default function EnhancedHeroHeader() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="md:hidden relative w-full h-[45vh] min-h-[350px] mb-8 rounded-lg overflow-hidden shadow-xs "
           >
             <Image
@@ -80,7 +80,7 @@ export default function EnhancedHeroHeader() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="flex items-center gap-3 sm:gap-4 mb-6"
           >
             <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#C17B5C]" />
@@ -93,7 +93,7 @@ export default function EnhancedHeroHeader() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light leading-tight text-[#2C2420] mb-6"
           >
             Dr. Patricia
@@ -105,7 +105,7 @@ export default function EnhancedHeroHeader() {
           <motion.div
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: 80, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
             className="h-[2px] bg-gradient-to-r from-[#C17B5C] to-[#9B87C4] mb-6 sm:mb-8"
           />
 
@@ -113,7 +113,7 @@ export default function EnhancedHeroHeader() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.1 }}
             className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-[#5C5349] max-w-xl mb-8 sm:mb-10"
           >
             Empowering leaders, parents and professionals to gain{" "}
@@ -128,7 +128,7 @@ export default function EnhancedHeroHeader() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.1 }}
             className="mb-10 sm:mb-12"
           >
             <Link href="/contact">
@@ -159,7 +159,7 @@ export default function EnhancedHeroHeader() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.1 }}
             className="flex flex-wrap gap-6 sm:gap-8 md:gap-10"
           >
             {credentials.map((item, i) => (
@@ -167,7 +167,7 @@ export default function EnhancedHeroHeader() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 + i * 0.1, duration: 0.8 }}
+                transition={{ delay:  0.2, duration: 0.1 }}
                 className="group relative cursor-default hover:-translate-y-1 transition-transform duration-300"
               >
                 {/* Subtle background on hover */}
