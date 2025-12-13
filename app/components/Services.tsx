@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -37,9 +36,9 @@ export default function EnhancedServices() {
       {/* Subtle grain texture */}
       <div className="absolute inset-0 opacity-[0.02] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')] pointer-events-none" />
 
-      {/* Colorful background accents */}
-      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-[#CFCEFE]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-[#C17B5C]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Colorful background accents - Optimized */}
+      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-[#CFCEFE]/15 rounded-full blur-xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-[#C17B5C]/10 rounded-full blur-xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* Elegant Section Header */}
@@ -72,34 +71,6 @@ export default function EnhancedServices() {
 }
 
 function LuxuryServiceCard({ service, index }: { service: typeof services[number]; index: number }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 30 });
-  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 30 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["3deg", "-3deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-3deg", "3deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    setIsHovered(false);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -110,132 +81,68 @@ function LuxuryServiceCard({ service, index }: { service: typeof services[number
         ease: [0.22, 1, 0.36, 1],
       }}
       viewport={{ once: true }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
       className="group cursor-pointer"
     >
       <div className="relative h-full">
-        {/* Colored glow on hover */}
-        <motion.div
-          animate={{
-            opacity: isHovered ? 0.4 : 0,
-          }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 blur-2xl rounded-lg translate-y-8"
-          style={{ backgroundColor: service.color }}
-        />
-
-        {/* Main Card with gradient background */}
+        {/* Main Card with gradient background - Optimized */}
         <div
-          className={`relative h-full bg-gradient-to-br ${service.bgGradient} backdrop-blur-md border-2 border-white/60 rounded-sm p-12 transition-all duration-700 overflow-hidden shadow-lg`}
+          className={`relative h-full bg-gradient-to-br ${service.bgGradient} backdrop-blur-md border-2 border-white/60 rounded-sm p-12 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl`}
         >
           {/* Colored hover overlay */}
-          <motion.div
-            animate={{
-              opacity: isHovered ? 0.03 : 0,
-            }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0"
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-600"
             style={{ backgroundColor: service.color }}
           />
 
           {/* Decorative colored element top right */}
-          <motion.div
-            animate={{
-              scale: isHovered ? 1.1 : 1,
-              opacity: isHovered ? 0.06 : 0.04,
-            }}
-            transition={{ duration: 0.6 }}
-            className="absolute -top-10 -right-10 w-48 h-48 rounded-full blur-2xl"
+          <div
+            className="absolute -top-10 -right-10 w-48 h-48 rounded-full blur-xl opacity-[0.04] group-hover:opacity-[0.06] group-hover:scale-110 transition-all duration-600"
             style={{ backgroundColor: service.color }}
           />
 
           {/* Number - With color accent */}
           <div className="relative mb-12">
-            <motion.p
-              animate={{
-                y: isHovered ? -2 : 0,
-              }}
-              transition={{ duration: 0.4 }}
-              className="text-8xl font-serif font-extralight leading-none"
+            <p
+              className="text-8xl font-serif font-extralight leading-none group-hover:-translate-y-0.5 transition-transform duration-400"
               style={{
                 color: service.color,
                 opacity: 0.15,
-                transform: "translateZ(10px)",
               }}
             >
               {service.number}
-            </motion.p>
+            </p>
           </div>
 
           {/* Title */}
-          <h3
-            className="text-3xl font-serif font-light mb-6 text-[#2C2420] tracking-tight"
-            style={{ transform: "translateZ(20px)" }}
-          >
+          <h3 className="text-3xl font-serif font-light mb-6 text-[#2C2420] tracking-tight">
             {service.title}
           </h3>
 
           {/* Colored divider */}
-          <motion.div
-            animate={{
-              width: isHovered ? "60px" : "40px",
-            }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="h-[2px] mb-8"
-            style={{
-              backgroundColor: service.color,
-              transform: "translateZ(20px)",
-            }}
+          <div
+            className="h-[2px] w-10 mb-8 group-hover:w-[60px] transition-all duration-500"
+            style={{ backgroundColor: service.color }}
           />
 
           {/* Description */}
-          <p
-            className="text-[#5C5349] leading-relaxed mb-10 font-light text-[15px]"
-            style={{ transform: "translateZ(15px)" }}
-          >
+          <p className="text-[#5C5349] leading-relaxed mb-10 font-light text-[15px]">
             {service.desc}
           </p>
 
           {/* Elegant CTA with color */}
-          <motion.div
-            animate={{
-              x: isHovered ? 3 : 0,
-            }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-3 font-light text-sm tracking-wide"
-            style={{
-              color: service.color,
-              transform: "translateZ(25px)",
-            }}
+          <div
+            className="inline-flex items-center gap-3 font-light text-sm tracking-wide group-hover:translate-x-1 transition-transform duration-400"
+            style={{ color: service.color }}
           >
             <span>Discover More</span>
-            <motion.span
-              animate={{
-                x: isHovered ? 4 : 0,
-                opacity: isHovered ? 1 : 0.7,
-              }}
-              transition={{ duration: 0.4 }}
-              className="text-base"
-            >
+            <span className="text-base opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-400">
               →
-            </motion.span>
-          </motion.div>
+            </span>
+          </div>
 
           {/* Corner accent with color */}
-          <motion.div
-            animate={{
-              opacity: isHovered ? 0.08 : 0.04,
-              scale: isHovered ? 1.2 : 1,
-            }}
-            transition={{ duration: 0.6 }}
-            className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full blur-3xl"
+          <div
+            className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full blur-xl opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-110 transition-all duration-600"
             style={{ backgroundColor: service.color }}
           />
         </div>

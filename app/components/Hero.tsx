@@ -1,17 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-function useParallax(strength = 0.1) {
-  const { scrollY } = useScroll();
-  return useTransform(scrollY, [0, 1000], [0, 1000 * strength]);
-}
-
 export default function EnhancedHeroHeader() {
   const imageUrl = "/blackw3.jpg";
-  const y = useParallax(0.12);
 
   const credentials = [
     {
@@ -31,56 +25,35 @@ export default function EnhancedHeroHeader() {
       {/* GRAIN TEXTURE */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none bg-[url('/grain.png')]" />
 
-      {/* ELEGANT BACKGROUND ELEMENTS */}
-      <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] bg-[#CFCEFE]/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#C17B5C]/6 rounded-full blur-3xl pointer-events-none" />
+      {/* ELEGANT BACKGROUND ELEMENTS - Optimized */}
+      <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] bg-[#CFCEFE]/8 rounded-full blur-xl pointer-events-none will-change-auto" />
+      <div className="absolute bottom-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#C17B5C]/6 rounded-full blur-xl pointer-events-none will-change-auto" />
 
-      {/* IMAGE RIGHT SIDE - Enhanced - Hidden on mobile, shown on md+ */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 pointer-events-none hidden md:block"
-      >
-        <motion.div
-          //   style={{ y }}
-          className="absolute right-0 top-0 h-full w-[55%] md:w-[52%] lg:w-[50%] overflow-hidden"
-        >
-          {/* Decorative border frame */}
-          {/* <div className="absolute inset-0 border-l-2 border-white/20 z-10" /> */}
-
-          <motion.div
-            initial={{ scale: 1.1, opacity: 0.7 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="relative w-full h-full"
-          >
+      {/* IMAGE RIGHT SIDE - Optimized for Safari */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block animate-fadeIn">
+        <div className="absolute right-0 top-0 h-full w-[55%] md:w-[52%] lg:w-[50%] overflow-hidden">
+          <div className="relative w-full h-full">
             <Image
               src={imageUrl}
               alt="Dr Patricia Barnett-Quaicoo"
               fill
               priority
               className="object-cover object-center opacity-90"
+              quality={85}
             />
-          </motion.div>
-
+          </div>
           {/* Subtle color overlay for cohesion */}
           <div className="absolute inset-0 bg-[#C17B5C]/8 mix-blend-multiply" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      {/* DECORATIVE CIRCLE - More subtle - Hidden on small screens */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-[-220px] top-[-220px] pointer-events-none z-10 hidden lg:block"
-      >
+      {/* DECORATIVE CIRCLE - Simplified */}
+      <div className="absolute left-[-220px] top-[-220px] pointer-events-none z-10 hidden lg:block opacity-0 animate-fadeIn" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
         <svg width="650" height="650" viewBox="0 0 600 600" fill="none">
           <circle cx="300" cy="300" r="300" fill="rgba(207, 206, 254, 0.12)" />
           <circle cx="300" cy="300" r="250" fill="rgba(193, 123, 92, 0.08)" />
         </svg>
-      </motion.div>
+      </div>
 
       {/* TEXT CONTENT */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 min-h-screen flex items-center">
@@ -175,17 +148,9 @@ export default function EnhancedHeroHeader() {
                 <span className="relative z-10 font-light tracking-wide text-sm sm:text-base">
                   Book a Free Session
                 </span>
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10"
-                >
+                <span className="relative z-10">
                   →
-                </motion.span>
+                </span>
               </motion.div>
             </Link>
           </motion.div>
@@ -203,22 +168,18 @@ export default function EnhancedHeroHeader() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1 + i * 0.1, duration: 0.8 }}
-                whileHover={{ y: -3 }}
-                className="group relative cursor-default"
+                className="group relative cursor-default hover:-translate-y-1 transition-transform duration-300"
               >
                 {/* Subtle background on hover */}
-                <motion.div
+                <div
                   className="absolute inset-0 -inset-x-3 sm:-inset-x-4 -inset-y-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ backgroundColor: `${item.color}08` }}
                 />
 
                 <div className="relative">
                   {/* Colored accent line */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "20px" }}
-                    transition={{ delay: 1.1 + i * 0.1, duration: 0.6 }}
-                    className="h-[2px] mb-1 sm:mb-2 group-hover:w-8 sm:group-hover:w-10 transition-all duration-500"
+                  <div
+                    className="h-[2px] w-5 mb-1 sm:mb-2 group-hover:w-8 sm:group-hover:w-10 transition-all duration-500"
                     style={{ backgroundColor: item.color }}
                   />
 
@@ -252,17 +213,8 @@ export default function EnhancedHeroHeader() {
       <div className="absolute bottom-0 left-0 w-full h-24 sm:h-32 bg-gradient-to-t from-[#F7EFE8] to-transparent pointer-events-none hidden md:block" />
 
       {/* Scroll indicator - Hidden on mobile */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.6, duration: 0.8 }}
-        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 hidden md:flex"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-[#C17B5C] opacity-60"
-        >
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 hidden md:flex opacity-0 animate-fadeIn" style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>
+        <div className="flex flex-col items-center gap-2 text-[#C17B5C] opacity-60 animate-bounce">
           <span className="text-xs tracking-wider uppercase font-light">
             Scroll
           </span>
@@ -275,8 +227,8 @@ export default function EnhancedHeroHeader() {
               strokeLinejoin="round"
             />
           </svg>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </header>
   );
 }

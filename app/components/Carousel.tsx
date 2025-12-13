@@ -18,9 +18,9 @@ export default function EnhancedLogoCarousel() {
       {/* Subtle gradient overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#F5F1E8]/80 to-transparent" />
 
-      {/* Decorative background elements */}
-      <div className="absolute left-1/4 top-0 w-64 h-64 bg-[#B8B5D4]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute right-1/4 bottom-0 w-64 h-64 bg-[#9B6B5C]/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative background elements - Optimized */}
+      <div className="absolute left-1/4 top-0 w-64 h-64 bg-[#B8B5D4]/5 rounded-full blur-xl pointer-events-none" />
+      <div className="absolute right-1/4 bottom-0 w-64 h-64 bg-[#9B6B5C]/5 rounded-full blur-xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header - Enhanced */}
@@ -77,22 +77,13 @@ export default function EnhancedLogoCarousel() {
             className="relative flex justify-center"
           >
             <div className="w-full max-w-6xl overflow-hidden">
-              {/* Scrolling logos */}
+              {/* Scrolling logos - Optimized */}
               <div className="logo-marquee flex items-center gap-16">
                 {[...logos, ...logos, ...logos].map((src, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    whileHover={{ scale: 1.1, y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 h-20 w-32 flex items-center justify-center group cursor-pointer relative"
+                    className="flex-shrink-0 h-20 w-32 flex items-center justify-center group cursor-pointer relative hover:scale-105 hover:-translate-y-1 transition-transform duration-300"
                   >
-                    {/* Subtle background on hover */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      className="absolute inset-0 bg-white/40 rounded-lg backdrop-blur-sm"
-                    />
-
                     <Image
                       src={src}
                       alt={`Partner logo ${(i % logos.length) + 1}`}
@@ -100,14 +91,7 @@ export default function EnhancedLogoCarousel() {
                       height={50}
                       className="object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 relative z-10"
                     />
-
-                    {/* Colored accent on hover */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileHover={{ opacity: 0.15, scale: 1 }}
-                      className="absolute inset-0 bg-[#9B6B5C] rounded-lg blur-xl"
-                    />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -152,8 +136,9 @@ export default function EnhancedLogoCarousel() {
         .logo-marquee {
           display: flex;
           align-items: center;
-          animation: marquee 40s linear infinite;
+          animation: marquee 50s linear infinite;
           width: max-content;
+          will-change: transform;
         }
 
         .logo-marquee:hover {
@@ -162,10 +147,10 @@ export default function EnhancedLogoCarousel() {
 
         @keyframes marquee {
           0% {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translate3d(-33.333%, 0, 0);
           }
         }
 

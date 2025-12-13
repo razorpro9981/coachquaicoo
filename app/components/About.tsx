@@ -1,18 +1,10 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-function useParallax(strength = 0.1) {
-  const { scrollY } = useScroll();
-  return useTransform(scrollY, [0, 1000], [0, 1000 * strength]);
-}
-
 export default function EnhancedAboutSection() {
-  const sectionRef = useRef(null);
-  const y = useParallax(0.1);
 
   const credentials = [
     {
@@ -39,42 +31,27 @@ export default function EnhancedAboutSection() {
 
   return (
     <section
-      ref={sectionRef}
       className="relative w-full min-h-screen bg-[#F7EFE8] py-20 md:py-32 overflow-hidden"
     >
-      {/* Sophisticated background elements */}
-      <div className="absolute right-[-150px] top-[100px] w-[600px] h-[600px] bg-gradient-radial from-[#E6DAF5]/20 to-transparent blur-3xl pointer-events-none" />
-      <div className="absolute left-[-100px] bottom-[100px] w-[500px] h-[500px] bg-gradient-radial from-[#C17B5C]/10 to-transparent blur-3xl pointer-events-none" />
+      {/* Sophisticated background elements - Optimized */}
+      <div className="absolute right-[-150px] top-[100px] w-[600px] h-[600px] bg-gradient-radial from-[#E6DAF5]/20 to-transparent blur-xl pointer-events-none" />
+      <div className="absolute left-[-100px] bottom-[100px] w-[500px] h-[500px] bg-gradient-radial from-[#C17B5C]/10 to-transparent blur-xl pointer-events-none" />
 
       {/* Subtle grain */}
       <div className="absolute inset-0 opacity-[0.02] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')] pointer-events-none" />
 
-      {/* Image with parallax - Hidden on mobile, visible on md+ */}
+      {/* Image - Hidden on mobile, visible on md+ */}
       <div className="absolute inset-0 pointer-events-none hidden md:block">
-        <motion.div
-          className="absolute left-0 top-0 h-full w-[48%] md:w-[45%] lg:w-[42%] overflow-hidden"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        //   style={{ y }}
-        >
-          {/* Decorative frame effect */}
-          {/* <div className="absolute inset-0 border-r-4 border-white/20 z-10" /> */}
-
+        <div className="absolute left-0 top-0 h-full w-[48%] md:w-[45%] lg:w-[42%] overflow-hidden animate-fadeIn">
           <Image
             src="/blackw3.jpg"
             alt="Dr Patricia Barnett-Quaicoo"
             fill
             priority
             className="object-cover object-center scale-95"
+            quality={85}
           />
-
-          {/* Elegant gradient fade */}
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#F7EFE8]" /> */}
-
-          {/* Subtle color overlay */}
-          {/* <div className="absolute inset-0 bg-[#C17B5C]/5 mix-blend-multiply" /> */}
-        </motion.div>
+        </div>
       </div>
 
       {/* Content */}
@@ -124,24 +101,8 @@ export default function EnhancedAboutSection() {
               <span className="relative z-10">
                 Clarity, Confidence & Growth
               </span>
-              {/* Elegant underline */}
-              <motion.svg
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.6 }}
-                transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
-                viewport={{ once: true }}
-                className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-4 sm:h-5 text-[#C17B5C]"
-                viewBox="0 0 400 20"
-                fill="none"
-              >
-                <motion.path
-                  d="M5 12 Q100 5, 200 10 T395 8"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </motion.svg>
+              {/* Simple underline - no animation */}
+              <span className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-0.5 bg-[#C17B5C] opacity-60"></span>
             </span>
           </motion.h2>
 
@@ -174,23 +135,18 @@ export default function EnhancedAboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="relative group cursor-default"
+                className="relative group cursor-default hover:-translate-y-1 transition-transform duration-300"
               >
                 {/* Subtle background on hover */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ backgroundColor: `${item.color}08` }}
                 />
 
                 <div className="relative p-3 sm:p-4">
                   {/* Colored accent line */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "30px" }}
-                    transition={{ duration: 0.8, delay: 0.5 + i * 0.1 }}
-                    viewport={{ once: true }}
-                    className="h-[2px] mb-2 sm:mb-3 group-hover:w-12 transition-all duration-500"
+                  <div
+                    className="h-[2px] w-[30px] mb-2 sm:mb-3 group-hover:w-12 transition-all duration-500"
                     style={{ backgroundColor: item.color }}
                   />
 
@@ -208,7 +164,7 @@ export default function EnhancedAboutSection() {
             ))}
           </motion.div>
 
-          {/* Signature with elegant animation */}
+          {/* Signature */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -217,49 +173,26 @@ export default function EnhancedAboutSection() {
             className="mb-6 md:mb-10"
           >
             <div className="relative inline-block">
-              {/* Decorative element behind signature */}
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                viewport={{ once: true }}
-                className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 bg-[#C17B5C]/8 rounded-full blur-xl"
-              />
-
               <p className="relative font-['Allura'] text-4xl sm:text-5xl text-[#C17B5C] select-none">
                 Patricia
               </p>
             </div>
           </motion.div>
 
-          {/* CTA Button - Enhanced */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <Link href="/about">
-              <motion.div
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-2 sm:gap-3 group"
-              >
-                <span className="text-[#C17B5C] font-light text-sm sm:text-base tracking-wide">
-                  Read My Story
-                </span>
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="text-[#C17B5C] text-base sm:text-lg"
-                >
-                  →
-                </motion.span>
-              </motion.div>
+            <Link href="/about" className="inline-flex items-center gap-2 sm:gap-3 group hover:translate-x-1 transition-transform duration-300">
+              <span className="text-[#C17B5C] font-light text-sm sm:text-base tracking-wide">
+                Read My Story
+              </span>
+              <span className="text-[#C17B5C] text-base sm:text-lg group-hover:translate-x-1 transition-transform duration-300">
+                →
+              </span>
             </Link>
           </motion.div>
 

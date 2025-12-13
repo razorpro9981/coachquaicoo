@@ -12,23 +12,15 @@ import FAQSection from "../components/FAQ";
 
 export default function LuxuryHome() {
   return (
-    <div className="min-h-screen flex flex-col bg-(--bg-cream)">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-cream)]">
       <Navbar />
-
       <EnhancedHeroHeader />
-
       <EnhancedLogoCarousel />
-
       <EnhancedAboutSection />
-
       <EnhancedServices />
-
       <EnhancedQuotesSection />
-
       <MultiPathCTA />
-
-      <FAQSection/>
-
+      <FAQSection />
       <EnhancedFooter />
     </div>
   );
